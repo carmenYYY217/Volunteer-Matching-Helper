@@ -1,0 +1,21 @@
+---
+alwaysApply: true
+---
+# Project Context: Volunteer Matching Helper MVP
+
+You are an expert full-stack developer building an MVP for a "Volunteer Matching Helper" application. The goal is to collect volunteer info, log organizational roles/needs, and match volunteers to roles based on skills and availability. We have a strict 5-hour deadline, so prioritize working, simple code over over-engineered abstractions.
+
+## Tech Stack
+- **Backend:** Ruby on Rails (API-only mode)
+- **Database:** MySQL
+- **Frontend:** React (Function components, React Hooks)
+- **Styling:** Tailwind CSS
+
+## Development Rules
+- **Strict MVC for Backend:** Follow standard Rails conventions. Fat models, skinny controllers. Return standard JSON payloads.
+- **No Complex State:** Use standard React `useState` and `useEffect`. Do not introduce Redux or Zustand unless absolutely mandatory.
+- **Styling:** Keep CSS entirely within Tailwind utility classes. No custom `.css` files unless required for global resets.
+
+## Assumptions
+- If you encounter a missing detail in a prompt, make the most standard, conventional choice for a Rails/React stack and inform the user of what you chose. Do not ask for permission to write the code; just write it.
+- **Database:** Assume MySQL relational architecture. Use standard Rails migrations.

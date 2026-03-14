@@ -1,0 +1,63 @@
+### Volunteer Matching Helper API Tests
+
+@baseUrl = http://localhost:3000/api/v1
+
+### 1. Admin Login (Get Token)
+# @name login
+POST {{baseUrl}}/admin/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "password"
+}
+
+### Extract Token
+@authToken = {{login.response.body.token}}
+
+### 2. Get All Roles (Admin)
+GET {{baseUrl}}/admin/roles
+Authorization: Bearer {{authToken}}
+
+### 3. Get All Volunteers (Admin)
+GET {{baseUrl}}/admin/volunteers
+Authorization: Bearer {{authToken}}
+
+### 4. Get Volunteers (Admin) - Filter by Skill ID (e.g., Skill ID 1)
+GET {{baseUrl}}/admin/volunteers?skill_id=1
+Authorization: Bearer {{authToken}}
+
+### 5. Get Volunteers (Admin) - Filter by Day of Week
+GET {{baseUrl}}/admin/volunteers?day_of_week=Saturday
+Authorization: Bearer {{authToken}}
+
+### 6. Public Intake Form (Create Volunteer)
+POST {{baseUrl}}/public/volunteers
+Content-Type: application/json
+
+{
+  "volunteer": {
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe.new@example.com",
+    "phone": "555-0199",
+    "availabilities_attributes": [
+      {
+        "day_of_week": "Saturday",
+        "time_of_day": "Morning"
+      }
+    ],
+    "skills_attributes": [
+      {
+        "name": "Photography"
+      },
+      {
+        "name": "Driving"
+      }
+    ]
+  }
+}
+
+### 7. AI Match Stub (Admin) - Requires a valid Role ID
+GET {{baseUrl}}/admin/roles/1/ai_match
+Authorization: Bearer {{authToken}}

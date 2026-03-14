@@ -12,8 +12,9 @@ gem "bcrypt", "~> 3.1.7"
 gem "jwt"
 gem "rack-cors"
 
-# Standardize on SQLite3 for the MVP to avoid native build errors completely
-gem "sqlite3", "~> 1.4"
+# Use sqlite3 for local, postgres for production
+gem "sqlite3", "~> 1.4", groups: [:development, :test]
+gem "pg", group: :production
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
